@@ -7,7 +7,7 @@ using System.Text;
 
 namespace ToDoList
 {
-    [ServiceContract(Name = "http://wcfclient.codeplex.com")]
+    [ServiceContract(Name = "ITodoListService")]
     public interface ITodoListService
     {
         [OperationContract]
@@ -17,7 +17,7 @@ namespace ToDoList
         string CreateItem(ToDoItem item);
     }
 
-    [DataContract(Name="http://wcfclient.codeplex.com/schema")]
+    [DataContract(Name = "ToDoItem")]
     public class ToDoItem
     {
         [DataMember(Order= 1, IsRequired= false)]
@@ -28,5 +28,10 @@ namespace ToDoList
 
         [DataMember(Order = 3, IsRequired = true)]
         public string Description { get; set; }
+
+        public override string ToString()
+        {
+            return "Title :" + Tittle + " " + "Description :" + Description;
+        }
     }
 }
